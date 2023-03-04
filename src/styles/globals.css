@@ -8,6 +8,29 @@
   --color-palette-red: #db543c;
   --color-palette-pink: #dfa1c9;
   --color-palette-purple: #a28cc7;
+
+  --color-background: #101010;
+}
+
+@font-face {
+  font-family: "GmarketSansLight";
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/GmarketSansTTFLight.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GmarketSansMedium";
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/GmarketSansTTFMedium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GmarketSansBold";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/GmarketSansTTFBold.ttf") format("truetype");
 }
 
 * {
