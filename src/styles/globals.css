@@ -1,5 +1,13 @@
 :root {
-  --color-primary: #000;
+  --color-palette-black: #333;
+  --color-palette-white: #f2f2f2;
+  --color-palette-oatmeal: #f3e7d0;
+  --color-palette-blue: #6174fb;
+  --color-palette-green: #8cc7bb;
+  --color-palette-yellow: #ebbd37;
+  --color-palette-red: #db543c;
+  --color-palette-pink: #dfa1c9;
+  --color-palette-purple: #a28cc7;
 }
 
 * {
