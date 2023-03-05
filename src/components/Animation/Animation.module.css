@@ -27,9 +27,11 @@
 }
 
 .buzzle {
+  display: flex;
+  position: relative;
   font-family: "GmarketSansBold";
   font-size: 200px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
 }
 
 .buzzleB {
@@ -74,6 +76,46 @@
   animation-fill-mode: forwards;
 }
 
+.moveFarRight {
+  display: inline-block;
+  animation: moveToFarRight 0.5s;
+  animation-delay: 4.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.moveFourthSeat {
+  display: inline-block;
+  animation: moveToFourth 0.5s;
+  animation-delay: 4.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.moveThirdSeat {
+  display: inline-block;
+  animation: moveToThird 0.5s;
+  animation-delay: 4.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.moveSecondSeat {
+  display: inline-block;
+  animation: moveToSecond 0.5s;
+  animation-delay: 4.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+.moveFirstSeat {
+  display: inline-block;
+  animation: moveToFirst 0.5s;
+  animation-delay: 4.3s;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
 @keyframes slideUp {
   from {
     top: 80px;
@@ -93,5 +135,55 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@keyframes moveToFarRight {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(180%);
+  }
+}
+
+@keyframes moveToFourth {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+@keyframes moveToThird {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-320%);
+  }
+}
+
+@keyframes moveToSecond {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-130%);
+  }
+}
+
+@keyframes moveToFirst {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-460%);
   }
 }
