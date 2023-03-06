@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-
   width: 100%;
   height: 100%;
 }
@@ -13,17 +12,21 @@
   flex-direction: column;
   align-items: center;
   gap: 80px;
-
   position: relative;
   top: 224.5px;
   color: var(--color-palette-white);
 }
 
 .sayHello {
-  position: relative;
   font-family: "GmarketSansMedium";
   font-size: 2rem;
-  animation: slideUp 1.5s ease Alternate;
+}
+
+.sayHello p {
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
 }
 
 .buzzle {
@@ -32,158 +35,4 @@
   font-family: "GmarketSansBold";
   font-size: 200px;
   letter-spacing: 0.05em;
-}
-
-.buzzleB {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 1.5s;
-  animation-fill-mode: forwards;
-}
-
-.buzzleU {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 2.5s;
-  animation-fill-mode: forwards;
-}
-
-.buzzleZ {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 2.7s;
-  animation-fill-mode: forwards;
-}
-
-.buzzleZZ {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 2.9s;
-  animation-fill-mode: forwards;
-}
-
-.buzzleL {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 3.1s;
-  animation-fill-mode: forwards;
-}
-
-.buzzleE {
-  opacity: 0;
-  animation: textShow 0.5s ease;
-  animation-delay: 3.3s;
-  animation-fill-mode: forwards;
-}
-
-.moveFarRight {
-  display: inline-block;
-  animation: moveToFarRight 0.5s;
-  animation-delay: 4.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
-}
-
-.moveFourthSeat {
-  display: inline-block;
-  animation: moveToFourth 0.5s;
-  animation-delay: 4.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
-}
-
-.moveThirdSeat {
-  display: inline-block;
-  animation: moveToThird 0.5s;
-  animation-delay: 4.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
-}
-
-.moveSecondSeat {
-  display: inline-block;
-  animation: moveToSecond 0.5s;
-  animation-delay: 4.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
-}
-
-.moveFirstSeat {
-  display: inline-block;
-  animation: moveToFirst 0.5s;
-  animation-delay: 4.3s;
-  animation-fill-mode: forwards;
-  animation-timing-function: linear;
-}
-
-@keyframes slideUp {
-  from {
-    top: 80px;
-    opacity: 0;
-  }
-
-  to {
-    top: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes textShow {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes moveToFarRight {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(180%);
-  }
-}
-
-@keyframes moveToFourth {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-25%);
-  }
-}
-
-@keyframes moveToThird {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-320%);
-  }
-}
-
-@keyframes moveToSecond {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-130%);
-  }
-}
-
-@keyframes moveToFirst {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-460%);
-  }
 }
