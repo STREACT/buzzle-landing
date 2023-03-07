@@ -1,7 +1,59 @@
 import styles from "./Animation.module.css";
-import { motion } from "framer-motion";
+import { motion, useSpring } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Animation() {
+  const [trigger, setTrigger] = useState(false);
+
+  const alphabetB = useSpring(0, { stiffness: 2000, damping: 400 });
+  const wordLZEZ = useSpring(0, { stiffness: 2000, damping: 400 });
+
+  const alphabetU = useSpring(0, { stiffness: 800, damping: 400 });
+  const alphabetFirstZ = useSpring(0, { stiffness: 800, damping: 400 });
+  const alphabetSecondZ = useSpring(0, { stiffness: 800, damping: 400 });
+  const alphabetL = useSpring(0, { stiffness: 800, damping: 400 });
+  const alphabetE = useSpring(0, { stiffness: 800, damping: 400 });
+
+  const handleDragEnd = () => {
+    const positionX = alphabetB.get();
+    if (positionX > -350) {
+      alphabetB.stop();
+      wordLZEZ.stop();
+      alphabetB.set(0);
+      wordLZEZ.set(0);
+    } else {
+      alphabetB.stop();
+      wordLZEZ.stop();
+      wordLZEZ.set(170);
+      alphabetB.set(-630);
+      setTrigger(true);
+    }
+  };
+
+  const handleDrag = () => {
+    const x = alphabetB.get();
+    wordLZEZ.set(-(x / 640) * 180);
+  };
+
+  useEffect(() => {
+    if (trigger) {
+      alphabetU.set(-630);
+      wordLZEZ.set(0);
+      alphabetFirstZ.set(200);
+      alphabetSecondZ.set(35);
+      alphabetL.set(670);
+      alphabetE.set(500);
+    }
+  }, [
+    alphabetU,
+    wordLZEZ,
+    alphabetFirstZ,
+    trigger,
+    alphabetSecondZ,
+    alphabetL,
+    alphabetE,
+  ]);
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>
@@ -34,71 +86,104 @@ export default function Animation() {
         </motion.div>
         <div className={styles.buzzle}>
           <motion.div
+            onDragEnd={handleDragEnd}
+            onDrag={handleDrag}
+            style={{ x: alphabetB }}
+            drag="x"
+            dragConstraints={{ left: -630, right: 0 }}
+            dragElastic={0}
+          >
+            <motion.div
+              animate={{ x: 630 }}
+              transition={{ duration: 0.5, delay: 4.3 }}
+            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+              >
+                B
+              </motion.div>
+              <motion.img
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 7.0 }}
+                style={{
+                  position: "absolute",
+                  top: "-10px",
+                  left: "-15px",
+                }}
+                src="/image/blue_box.svg"
+                alt="blue_box"
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div
             animate={{ x: 630 }}
             transition={{ duration: 0.5, delay: 4.3 }}
           >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.5 }}
-            >
-              B
-            </motion.span>
-            <motion.span
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 2.5 }}
+              style={{ x: alphabetU }}
             >
               U
-            </motion.span>
+            </motion.div>
           </motion.div>
-          <motion.div
-            animate={{ x: -200 }}
-            transition={{ duration: 0.5, delay: 4.3 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 2.7 }}
+          <motion.div style={{ display: "flex", x: wordLZEZ }}>
+            <motion.div
+              animate={{ x: -200 }}
+              transition={{ duration: 0.5, delay: 4.3 }}
             >
-              Z
-            </motion.span>
-          </motion.div>
-          <motion.div
-            animate={{ x: -35 }}
-            transition={{ duration: 0.5, delay: 4.3 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 2.9 }}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 2.7 }}
+                style={{ x: alphabetFirstZ }}
+              >
+                Z
+              </motion.div>
+            </motion.div>
+            <motion.div
+              animate={{ x: -35 }}
+              transition={{ duration: 0.5, delay: 4.3 }}
             >
-              Z
-            </motion.span>
-          </motion.div>
-          <motion.div
-            animate={{ x: -670 }}
-            transition={{ duration: 0.5, delay: 4.3 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 3.1 }}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 2.9 }}
+                style={{ x: alphabetSecondZ }}
+              >
+                Z
+              </motion.div>
+            </motion.div>
+            <motion.div
+              animate={{ x: -670 }}
+              transition={{ duration: 0.5, delay: 4.3 }}
             >
-              L
-            </motion.span>
-          </motion.div>
-          <motion.div
-            animate={{ x: -500 }}
-            transition={{ duration: 0.5, delay: 4.3 }}
-          >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 3.3 }}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 3.1 }}
+                style={{ x: alphabetL }}
+              >
+                L
+              </motion.div>
+            </motion.div>
+            <motion.div
+              animate={{ x: -500 }}
+              transition={{ duration: 0.5, delay: 4.3 }}
             >
-              E
-            </motion.span>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 3.3 }}
+                style={{ x: alphabetE }}
+              >
+                E
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
