@@ -1,18 +1,29 @@
 import styles from "./Animation.module.css";
-import { motion, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function Animation() {
+interface AnimationProps {
+  isAnimate: boolean;
+  finishAnimation: () => void;
+}
+
+export default function Animation({
+  isAnimate,
+  finishAnimation,
+}: AnimationProps) {
+  const [isDraggable, setIsDraggable] = useState(false);
   const [trigger, setTrigger] = useState(false);
 
   const alphabetB = useSpring(0, { stiffness: 2000, damping: 400 });
   const wordLZEZ = useSpring(0, { stiffness: 2000, damping: 400 });
 
-  const alphabetU = useSpring(0, { stiffness: 800, damping: 400 });
-  const alphabetFirstZ = useSpring(0, { stiffness: 800, damping: 400 });
-  const alphabetSecondZ = useSpring(0, { stiffness: 800, damping: 400 });
-  const alphabetL = useSpring(0, { stiffness: 800, damping: 400 });
-  const alphabetE = useSpring(0, { stiffness: 800, damping: 400 });
+  const alphabetU = useSpring(0, { stiffness: 1500, damping: 400 });
+  const alphabetFirstZ = useSpring(0, { stiffness: 1500, damping: 400 });
+  const alphabetSecondZ = useSpring(0, { stiffness: 1500, damping: 400 });
+  const alphabetL = useSpring(0, { stiffness: 1500, damping: 400 });
+  const alphabetE = useSpring(0, { stiffness: 1500, damping: 400 });
+
+  const totalOpacity = useMotionValue(1);
 
   const handleDragEnd = () => {
     const positionX = alphabetB.get();
@@ -36,6 +47,12 @@ export default function Animation() {
   };
 
   useEffect(() => {
+    setTimeout(() => {
+      setIsDraggable(true);
+    }, 7000);
+  }, []);
+
+  useEffect(() => {
     if (trigger) {
       alphabetU.set(-630);
       wordLZEZ.set(0);
@@ -43,6 +60,8 @@ export default function Animation() {
       alphabetSecondZ.set(35);
       alphabetL.set(670);
       alphabetE.set(500);
+
+      finishAnimation();
     }
   }, [
     alphabetU,
@@ -52,11 +71,18 @@ export default function Animation() {
     alphabetSecondZ,
     alphabetL,
     alphabetE,
+    finishAnimation,
   ]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.box}>
+      <motion.div
+        className={styles.box}
+        style={{ opacity: totalOpacity }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isAnimate ? 0 : 1 }}
+        transition={{ duration: 1 }}
+      >
         <motion.div
           className={styles.sayHello}
           initial={{ opacity: 0, top: "80px" }}
@@ -89,7 +115,7 @@ export default function Animation() {
             onDragEnd={handleDragEnd}
             onDrag={handleDrag}
             style={{ x: alphabetB }}
-            drag="x"
+            drag={isDraggable ? "x" : false}
             dragConstraints={{ left: -630, right: 0 }}
             dragElastic={0}
           >
@@ -186,7 +212,7 @@ export default function Animation() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

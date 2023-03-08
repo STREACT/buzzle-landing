@@ -1,9 +1,27 @@
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Section from "@/components/Section";
 import Animation from "@/components/Animation";
 import Head from "next/head";
 
 export default function Home() {
+  const [isFinish, setIsFinish] = useState(false);
+  const [isAnimate, setIsAnimate] = useState(false);
+
+  const finishAnimation = () => {
+    setTimeout(() => {
+      setIsAnimate(true);
+    }, 1500);
+  };
+
+  useEffect(() => {
+    if (isAnimate) {
+      setTimeout(() => {
+        setIsFinish(true);
+      }, 1500);
+    }
+  }, [isAnimate]);
+
   return (
     <>
       <Head>
@@ -14,7 +32,12 @@ export default function Home() {
       </Head>
       <main>
         <Section>
-          <Animation />
+          {isFinish ? null : (
+            <Animation
+              isAnimate={isAnimate}
+              finishAnimation={finishAnimation}
+            />
+          )}
         </Section>
       </main>
     </>
