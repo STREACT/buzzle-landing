@@ -1,4 +1,57 @@
-.container {
+.header {
+  position: relative;
   width: 100%;
-  background-color: var(--color-palette-black);
+  background-color: black;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border-bottom: 1px solid rgba(242, 242, 242, 0.2);
+  background-color: black;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 1000px;
+  height: 77px;
+
+  color: var(--color-palette-white);
+}
+
+.logo {
+  display: flex;
+  gap: 11px;
+  font-family: "GmarketSansBold";
+  font-size: 29px;
+  letter-spacing: -0.01em;
+}
+
+.menu {
+  display: flex;
+  gap: 56px;
+  list-style-type: none;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.01em;
+}
+
+.menu__item:hover {
+  cursor: pointer;
+  color: var(--color-palette-pink);
+}
+
+.join__button {
+  background-color: var(--color-palette-pink);
+  border: 2px solid #000000;
+  border-radius: 6px;
+  padding: 11px 27px;
+
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--color-palette-black);
 }

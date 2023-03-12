@@ -42,10 +42,26 @@
 html,
 body {
   max-width: 100vw;
+  overflow-x: hidden;
+
+  /* 스크롤바 안보이게 하기 */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  /* 텍스트 드래그 막기 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
   height: 100%;
+}
+
+/* 스크롤바 안보이게 하기 */
+::-webkit-scrollbar {
+  display: none;
 }
 
 a {

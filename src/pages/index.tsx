@@ -18,7 +18,7 @@ export default function Home() {
     if (isAnimate) {
       setTimeout(() => {
         setIsFinish(true);
-      }, 1500);
+      }, 1000);
     }
   }, [isAnimate]);
 
@@ -31,6 +31,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        {isFinish && <Header isFinish={isFinish} />}
         <Section>
           {isFinish ? null : (
             <Animation
